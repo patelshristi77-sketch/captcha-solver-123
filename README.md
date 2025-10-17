@@ -1,30 +1,36 @@
-# Simple Captcha Solver
+## Simple Captcha Solver
 
-This is a basic, single-file web application designed to demonstrate a client-side interface for solving captchas. It allows users to load a captcha image, input their solution, and check if it's correct.
+This is a simple web-based Captcha solver interface. It allows users to load a captcha image (either by URL or using a default local image) and then enter the characters they see in the image.
 
-## Features
+### Features
 
--   **Image Loading:** Load captcha images from a specified URL or default to the included `sample.png`.
--   **URL Parameter Support:** Automatically loads an image if a `?url=` parameter is provided in the browser's address bar.
--   **User Input:** Provides an input field for users to type their captcha solution.
--   **Solution Verification:** For the default `sample.png` image, it verifies the user's input against the known correct answer ("ADuR3"). For other images loaded via URL, it indicates that verification is not supported client-side without a backend.
--   **Responsive Design:** Built with Tailwind CSS for a mobile-friendly and responsive user interface.
+*   **Load Image by URL**: Users can input an image URL to load any captcha image.
+*   **Default Image**: If no URL is provided, a default `sample.png` image is used.
+*   **Captcha Input**: A text field to enter the captcha solution.
+*   **Verification**: For the `sample.png` image, it checks against a hardcoded correct answer.
+*   **Dynamic Feedback**: Provides instant feedback on whether the captcha was solved correctly or if it's an unverified type.
+*   **Responsive Design**: Built with Tailwind CSS for a mobile-friendly layout.
 
-## How to Run
+### How to Use
 
-1.  **Save the files:** Save `index.html`, `README.md`, and `sample.png` in the same directory.
-2.  **Open `index.html`:** Open `index.html` in your web browser.
+1.  **Clone the repository** (or save the `index.html` and `sample.png` files).
+2.  **Open `index.html`** in your web browser.
+3.  **Load Captcha Image**:
+    *   Enter an image URL in the "Image URL" field and click "Load Image".
+    *   Alternatively, the `sample.png` will be displayed by default.
+4.  **Enter Captcha**:
+    *   Type the characters you see in the captcha image into the "Enter Captcha" field.
+5.  **Solve**:
+    *   Click the "Solve Captcha" button. The application will tell you if your answer is correct (for `sample.png`) or if it cannot verify the captcha.
 
-### Loading Custom Captchas
+### Development Notes
 
-You can load a custom captcha image in two ways:
+*   The correct answer for `sample.png` is hardcoded in the JavaScript (`correctCaptcha = "ADuR3"`).
+*   Loading an image from a URL dynamically changes the `src` attribute of the `<img>` tag.
+*   The application uses `DOMContentLoaded` to load an initial image if a `url` query parameter is present in the URL.
 
-1.  **Using the Input Field:** Type the URL of your captcha image into the "Image URL" field and click "Load Image".
-2.  **Using a URL Parameter:** Append `?url=YOUR_IMAGE_URL` to the `index.html` URL in your browser. For example:
-    `file:///path/to/your/index.html?url=https://example.com/some-other-captcha.png`
+### Technologies Used
 
-## Technologies Used
-
--   **HTML5:** Structure of the web page.
--   **Tailwind CSS:** For styling and responsive design.
--   **JavaScript:** For interactive elements, image loading logic, and client-side captcha verification (for `sample.png`).
+*   HTML5
+*   Tailwind CSS (via CDN)
+*   JavaScript (Vanilla)
